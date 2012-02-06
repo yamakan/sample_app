@@ -2,6 +2,11 @@ require File.expand_path('../boot', __FILE__)
 
 # Pick the frameworks you want:
 require 'rails/all'
+
+# If you have a Gemfile, require the gems listed there, including any gems
+# you've limited to :test, :development, or :production.
+
+
 # require "rails/test_unit/railtie"
 
 Bundler.require(:default, Rails.env) if defined?(Bundler)
@@ -35,6 +40,10 @@ module SampleApp
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    
+     # Configure sensitive parameters which will be filtered from the log file.
+    config.filter_parameters += [:password]
+    
 if Rails.env.test?
       initializer :after => :initialize_dependency_mechanism do
       ActiveSupport::Dependencies.mechanism = :load
